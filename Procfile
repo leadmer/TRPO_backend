@@ -1,1 +1,1 @@
-web: src/main/kotlin/etu/vt/trpo_backend/trpo_backend/TrpoBackendApplication.kt
+web: java -Dserver.port=$PORT -jar out/artifacts/trpo_backend_jar/trpo_backend.jar
