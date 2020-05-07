@@ -1,1 +1,1 @@
-web: etu/vt/trpo_backend/trpo_backend/TrpoBackendApplication.kt
+web: src/main/kotlin/etu/vt/trpo_backend/trpo_backend/TrpoBackendApplication.kt
