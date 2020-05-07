@@ -13,8 +13,6 @@ import org.springframework.http.converter.json.GsonHttpMessageConverter
 import org.springframework.web.bind.annotation.*
 import java.io.File
 import java.io.FileInputStream
-import java.net.http.HttpResponse
-import java.util.concurrent.atomic.AtomicLong
 
 /**
  *   Main controller for give reqeust and send response
@@ -23,9 +21,9 @@ import java.util.concurrent.atomic.AtomicLong
 @RequestMapping("/api")
 class MainController {
     val test = " %s"
-    var counter: AtomicLong = AtomicLong()
     private final val testPathPicture = "D:\\TRPO\\trpo_backend\\trpo_backend\\src\\main\\resources\\picture\\test_picture.png"
     val file : File = File(testPathPicture)
+    val counter: Long = 0
 
     /**
      *   Get method for testing server response on given data from User
@@ -41,7 +39,7 @@ class MainController {
         byteArr = s.readBytes()
         s.close()
 
-        return ResponsePictureTest(counter.incrementAndGet(), String.format(test, name),
+        return ResponsePictureTest(counter.inc(), String.format(test, name),
                 Base64.encodeBase64String(byteArr))
     }
 
