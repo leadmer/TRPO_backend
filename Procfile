@@ -1,1 +1,1 @@
-web: java -Dserver.port=$PORT -jar out/artifacts/trpo_backend_jar/trpo_backend.jar
+web: java -Dserver.port=$PORT -war app/tmp/cache/.m2/repository/etu/vt/trpo_backend/trpo_backend/0.0.1-SNAPSHOT/trpo_backend-0.0.1-SNAPSHOT.war
