@@ -11,7 +11,7 @@
 	<groupId>etu.vt.trpo_backend</groupId>
 	<artifactId>trpo_backend</artifactId>
 	<version>0.0.1-SNAPSHOT</version>
-	<packaging>jar</packaging>
+	<packaging>war</packaging>
 	<name>trpo_backend</name>
 	<description>Project for Spring Boot</description>
 

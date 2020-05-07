@@ -1,1 +1,1 @@
-web: java -Dserver.port=$PORT -jar etu/vt/trpo_backend/trpo_backend/0.0.1-SNAPSHOT/trpo_backend-0.0.1-SNAPSHOT.jar
+web: java $JAVA_OPTS -Dserver.port=$PORT -war target/trpo_backend-0.0.1-SNAPSHOT.war
