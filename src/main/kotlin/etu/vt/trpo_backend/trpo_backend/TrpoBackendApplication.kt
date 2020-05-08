@@ -12,7 +12,7 @@ import javax.servlet.MultipartConfigElement
 
 
 @SpringBootApplication
-class TrpoBackendApplication {
+class TrpoBackendApplication
 
 	@Bean
 	fun multipartConfigElement(): MultipartConfigElement? {
@@ -25,4 +25,3 @@ class TrpoBackendApplication {
 	fun main(args: Array<String>) {
 		runApplication<TrpoBackendApplication>(*args)
 	}
-}
