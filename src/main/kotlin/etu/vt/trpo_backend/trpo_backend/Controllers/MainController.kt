@@ -1,6 +1,5 @@
 package etu.vt.trpo_backend.trpo_backend.Controllers
 
-import etu.vt.trpo_backend.trpo_backend.Models.RequestPictureData
 import etu.vt.trpo_backend.trpo_backend.Models.ResponsePictureData
 import etu.vt.trpo_backend.trpo_backend.Models.ResponsePictureTest
 import org.apache.tomcat.util.codec.binary.Base64
@@ -48,13 +47,12 @@ class MainController {
      **/
     @RequestMapping(value = ["/picture"], method = [RequestMethod.POST], consumes = [MediaType.APPLICATION_JSON_VALUE])
     @ResponseBody
-    fun pictureResponse(@RequestBody request: RequestPictureData): ResponsePictureData{
+    fun pictureResponse(@RequestBody request: MultipartFile): ResponsePictureData{
         val success = "Success"
         val failed = "Failed"
-        val file = request.arrPicture
-        if (!request.arrPicture.isEmpty) {
+        if (!request.isEmpty) {
             try {
-                val bytes: ByteArray = file.bytes
+                val bytes: ByteArray = request.bytes
                 val stream = BufferedOutputStream(FileOutputStream(File("test_file" + "-uploaded")))
                 stream.write(bytes)
                 stream.close()
