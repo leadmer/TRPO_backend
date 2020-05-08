@@ -45,7 +45,7 @@ class MainController {
      *   @param {ByteArray} ByteArray picture witch get from User
      *   @return {ResponsePictureData} DataClass for sending result on request
      **/
-    @RequestMapping(value = ["/picture"], method = [RequestMethod.POST], consumes = [MediaType.MULTIPART_FORM_DATA_VALUE])
+    @RequestMapping(value = ["/picture"], headers = ["Content-Type= multipart/form-data"], method = [RequestMethod.POST], consumes = [MediaType.MULTIPART_FORM_DATA_VALUE])
     @ResponseBody
     fun pictureResponse(@RequestParam("imageRequest") request: MultipartFile): ResponsePictureData{
         val success = "Success"
