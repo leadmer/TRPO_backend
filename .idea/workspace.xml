@@ -6,7 +6,10 @@
     </artifacts-to-build>
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="def14994-a615-44e9-9d97-ffe30f685e60" name="Default Changelist" comment="" />
+    <list default="true" id="def14994-a615-44e9-9d97-ffe30f685e60" name="Default Changelist" comment="">
+      <change beforePath="$PROJECT_DIR$/src/main/kotlin/etu/vt/trpo_backend/trpo_backend/Controllers/MainController.kt" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/kotlin/etu/vt/trpo_backend/trpo_backend/Controllers/MainController.kt" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/kotlin/etu/vt/trpo_backend/trpo_backend/TrpoBackendApplication.kt" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/kotlin/etu/vt/trpo_backend/trpo_backend/TrpoBackendApplication.kt" afterDir="false" />
+    </list>
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />

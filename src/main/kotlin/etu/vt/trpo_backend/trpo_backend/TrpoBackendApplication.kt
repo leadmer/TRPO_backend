@@ -13,14 +13,6 @@ import javax.servlet.MultipartConfigElement
 @SpringBootApplication
 class TrpoBackendApplication
 
-	@Bean
-	fun multipartConfigElement(): MultipartConfigElement? {
-		val factory = MultipartConfigFactory()
-		factory.setMaxFileSize(DataSize.ofMegabytes(20))
-		factory.setMaxRequestSize(DataSize.ofMegabytes(20))
-		return factory.createMultipartConfig()
-	}
-
 	fun main(args: Array<String>) {
 		runApplication<TrpoBackendApplication>(*args)
 	}
