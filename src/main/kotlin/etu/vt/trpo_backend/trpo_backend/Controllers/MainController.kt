@@ -3,13 +3,14 @@ package etu.vt.trpo_backend.trpo_backend.Controllers
 import etu.vt.trpo_backend.trpo_backend.Models.ResponsePictureData
 import etu.vt.trpo_backend.trpo_backend.Models.ResponsePictureTest
 import org.apache.tomcat.util.codec.binary.Base64
-import org.springframework.http.MediaType
+import org.springframework.context.annotation.Bean
 import org.springframework.web.bind.annotation.*
 import org.springframework.web.multipart.MultipartFile
 import java.io.BufferedOutputStream
 import java.io.File
 import java.io.FileInputStream
 import java.io.FileOutputStream
+import javax.servlet.MultipartConfigElement
 
 
 /**
@@ -78,6 +79,11 @@ class MainController {
 
         return ResponsePictureData(String.format(test, success), File("test_file" + "-uploaded"))
         //return ResponsePictureData(String.format(test, success), Base64.encodeBase64String(byteArray))
+    }
+
+    @Bean
+    fun multipartConfigElement(): MultipartConfigElement? {
+        return MultipartConfigElement("")
     }
 
 }
