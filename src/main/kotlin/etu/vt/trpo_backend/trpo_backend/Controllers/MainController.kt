@@ -4,8 +4,11 @@ import etu.vt.trpo_backend.trpo_backend.Models.ResponsePictureData
 import etu.vt.trpo_backend.trpo_backend.Models.ResponsePictureTest
 import org.apache.tomcat.util.codec.binary.Base64
 import org.springframework.context.annotation.Bean
+import org.springframework.core.annotation.Order
 import org.springframework.web.bind.annotation.*
 import org.springframework.web.multipart.MultipartFile
+import org.springframework.web.multipart.commons.CommonsMultipartResolver
+import org.springframework.web.multipart.support.MultipartFilter
 import java.io.BufferedOutputStream
 import java.io.File
 import java.io.FileInputStream
@@ -84,6 +87,21 @@ class MainController {
     @Bean
     fun multipartConfigElement(): MultipartConfigElement? {
         return MultipartConfigElement("")
+    }
+
+    @Bean
+    fun multipartResolver(): CommonsMultipartResolver? {
+        val multipart = CommonsMultipartResolver()
+        multipart.setMaxUploadSize(20 * 1024 * 1024.toLong())
+        return multipart
+    }
+
+    @Bean
+    @Order(0)
+    fun multipartFilter(): MultipartFilter? {
+        val multipartFilter = MultipartFilter()
+        multipartFilter.setMultipartResolverBeanName("multipartResolver")
+        return multipartFilter
     }
 
 }
