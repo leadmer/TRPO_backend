@@ -53,7 +53,6 @@ class MainController {
         //In mobile application retry Base64.encodeBase64String(byteArray) for sending ByteArray image data
         val byteArray = Base64.decodeBase64(byteArrayString)
         println(byteArray)
-        byteArray.forEach { println(it.toInt()) }
         if (byteArrayString == null)
             return ResponsePictureData(String.format(test, failed), Base64.encodeBase64String(byteArray))
 
