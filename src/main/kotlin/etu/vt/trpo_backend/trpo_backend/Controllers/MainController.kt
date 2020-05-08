@@ -1,15 +1,10 @@
 package etu.vt.trpo_backend.trpo_backend.Controllers
 
-import com.google.gson.Gson
 import etu.vt.trpo_backend.trpo_backend.Models.RequestPictureData
 import etu.vt.trpo_backend.trpo_backend.Models.ResponsePictureData
 import etu.vt.trpo_backend.trpo_backend.Models.ResponsePictureTest
 import org.apache.tomcat.util.codec.binary.Base64
-import org.springframework.boot.json.GsonJsonParser
-import org.springframework.http.HttpRequest
-import org.springframework.http.HttpStatus
 import org.springframework.http.MediaType
-import org.springframework.http.converter.json.GsonHttpMessageConverter
 import org.springframework.web.bind.annotation.*
 import java.io.File
 import java.io.FileInputStream
@@ -21,7 +16,7 @@ import java.io.FileInputStream
 @RequestMapping("/api")
 class MainController {
     val test = " %s"
-    private final val testPathPicture = "D:\\TRPO\\trpo_backend\\trpo_backend\\src\\main\\resources\\picture\\test_picture.png"
+    private final val testPathPicture = "resources/picture/test_picture.png"
     val file : File = File(testPathPicture)
     val counter: Long = 0
 
@@ -31,7 +26,6 @@ class MainController {
      *   @return {ResponsePictureTest} DataClass for testing result on request in test
      *   method (testResponse)
      **/
-    @ResponseStatus(value = HttpStatus.OK)
     @GetMapping("/test")
     fun testResponse(@RequestParam(value = "name", defaultValue = "Test") name: String): ResponsePictureTest{
         val byteArr: ByteArray
@@ -48,13 +42,12 @@ class MainController {
      *   @param {ByteArray} ByteArray picture witch get from User
      *   @return {ResponsePictureData} DataClass for sending result on request
      **/
-    @ResponseStatus(value = HttpStatus.OK)
     @RequestMapping(value = ["/picture"], method = [RequestMethod.POST], consumes = [MediaType.APPLICATION_JSON_VALUE])
     @ResponseBody
     fun pictureResponse(@RequestBody request: RequestPictureData): ResponsePictureData{
         val success = "Success"
         val failed = "Failed"
-        val byteArrayString = Gson().fromJson<String>(request.arrPicture, String::class.java) //request.arrPicture
+        val byteArrayString = request.arrPicture//Gson().fromJson<String>(request.arrPicture, String::class.java) //request.arrPicture
         println(byteArrayString)
 
         //In mobile application retry Base64.encodeBase64String(byteArray) for sending ByteArray image data
