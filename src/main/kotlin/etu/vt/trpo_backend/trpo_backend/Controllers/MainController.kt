@@ -47,7 +47,7 @@ class MainController {
      **/
     @RequestMapping(value = ["/picture"], method = [RequestMethod.POST], consumes = [MediaType.MULTIPART_FORM_DATA_VALUE])
     @ResponseBody
-    fun pictureResponse(@RequestBody request: MultipartFile): ResponsePictureData{
+    fun pictureResponse(@RequestPart("imageRequest") request: MultipartFile): ResponsePictureData{
         val success = "Success"
         val failed = "Failed"
         if (!request.isEmpty) {
