@@ -6,8 +6,12 @@ import etu.vt.trpo_backend.trpo_backend.Models.ResponsePictureTest
 import org.apache.tomcat.util.codec.binary.Base64
 import org.springframework.http.MediaType
 import org.springframework.web.bind.annotation.*
+import org.springframework.web.multipart.MultipartFile
+import java.io.BufferedOutputStream
 import java.io.File
 import java.io.FileInputStream
+import java.io.FileOutputStream
+
 
 /**
  *   Main controller for give reqeust and send response
@@ -47,15 +51,31 @@ class MainController {
     fun pictureResponse(@RequestBody request: RequestPictureData): ResponsePictureData{
         val success = "Success"
         val failed = "Failed"
-        val byteArrayString = request.arrPicture//Gson().fromJson<String>(request.arrPicture, String::class.java) //request.arrPicture
-        println(byteArrayString)
+        val file = request.arrPicture
+        if (!request.arrPicture.isEmpty) {
+            try {
+                val bytes: ByteArray = file.bytes
+                val stream = BufferedOutputStream(FileOutputStream(File("test_file" + "-uploaded")))
+                stream.write(bytes)
+                stream.close()
+                println("Вы удачно загрузили " + "test_file" + " в " + "test_file" + "-uploaded !")
+            } catch (e: Exception) {
+                println("Вам не удалось загрузить " + "test_file" + " => " + e.message)
+            }
+        } else {
+            println("Вам не удалось загрузить " + "test_file" + " потому что файл пустой.")
+        }
+        //val byteArrayString = request.arrPicture//Gson().fromJson<String>(request.arrPicture, String::class.java) //request.arrPicture
+        //println(byteArrayString)
 
         //In mobile application retry Base64.encodeBase64String(byteArray) for sending ByteArray image data
-        val byteArray = Base64.decodeBase64(byteArrayString)
-        println(byteArray)
-        if (byteArrayString == null)
-            return ResponsePictureData(String.format(test, failed), Base64.encodeBase64String(byteArray))
+        //val byteArray = Base64.decodeBase64(byteArrayString)
+        //println(byteArray)
+        //if (byteArrayString == null)
+            //return ResponsePictureData(String.format(test, failed), Base64.encodeBase64String(byteArray))
+        val stream = FileInputStream(File("test_file" + "-uploaded"))
 
-        return ResponsePictureData(String.format(test, success), Base64.encodeBase64String(byteArray))
+        return ResponsePictureData(String.format(test, success), File("test_file" + "-uploaded"))
+        //return ResponsePictureData(String.format(test, success), Base64.encodeBase64String(byteArray))
     }
 }
