@@ -86,22 +86,6 @@ class MainController {
         //return ResponsePictureData(String.format(test, success), Base64.encodeBase64String(byteArray))
     }
 
-
-//    @Bean
-//    fun multipartResolver(): CommonsMultipartResolver? {
-//        val multipart = CommonsMultipartResolver()
-//        multipart.setMaxUploadSize(20 * 1024 * 1024.toLong())
-//        return multipart
-//    }
-//
-//    @Bean
-//    @Order(0)
-//    fun multipartFilter(): MultipartFilter? {
-//        val multipartFilter = MultipartFilter()
-//        multipartFilter.setMultipartResolverBeanName("multipartResolver")
-//        return multipartFilter
-//    }
-
     @Bean
     fun multipartConfigElement(): MultipartConfigElement? {
         val factory = MultipartConfigFactory()
